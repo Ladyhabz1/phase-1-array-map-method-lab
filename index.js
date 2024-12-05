@@ -12,5 +12,22 @@ const tutorials = [
 ];
 
 const titleCased = () => {
-  return tutorials
-}
+  return tutorials.map((tutorial) =>{
+    return tutorial
+    .split(' ')//split the string into individual words
+    .map((word) => {
+      //Hande specific cases 
+      if (word === 'OO') return 'OO';
+      if (word === 'API') return 'API';
+      if (word === 'stopPropagation') return 'StopPropagation';
+      if (word === 'preventDefault') return 'PreventDefault';
+      if (word.toUpperCase() === 'JSONP') return 'JSONP';
+      if (word.toUpperCase() === 'NAN') return 'NaN';  
+      
+      //Genaral rule; Capitalize first letter, make the rest lowercase
+      return word[0].toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join(' ');//join the words back into a single string
+  });
+};
+module.exports = {titleCased};
